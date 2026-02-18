@@ -1,7 +1,5 @@
 from crewai import Agent,LLM
 
-from tools.stock_research_tool import StockResearchTool 
-
 llm = LLM(
     model="groq/llama-3.3-70b-versatile",
     temperature=0.0
@@ -9,12 +7,12 @@ llm = LLM(
 
 analyst_agent = Agent(
     role="Strategic Stock Trader",
-    goal=("perform in-depth evaluations of publicly traded stocks using real-time data,"
-          "identifying trends, performance insights, and potential investment opportunities to provide actionable recommendations. and key financial signals to support decision-making"),
-    backstory=("you are a veteran financial analyst with deep expertise in tntrpreting stock market data."
-                   "technical trensd and fundamental;s. you soecialize in producing well-structured reports that evaluate "
-                   "stock performance using market indicators")  ,
+    goal=("decide whether to buy , sell or hold a given stock based on live market data,"
+          "price movement, and financial analysis with the available data."),
+    backstory=("you are strategic stock trader with a strong background in financial analysis and market trends."
+               "you rely on real time stock data, daily price movements, and financial indicators to make informed trading decisions."
+                   "that optimize returns and reduce risk.")  ,
     llm=llm,
-    tools=[get_stock_price],
+    tools=[],
     verbose=True
 )
