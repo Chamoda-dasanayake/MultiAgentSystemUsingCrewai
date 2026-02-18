@@ -8,7 +8,7 @@ llm = LLM(
 )
 
 analyst_agent = Agent(
-    role="Financial Market Analyst",
+    role="Strategic Stock Trader",
     goal=("perform in-depth evaluations of publicly traded stocks using real-time data,"
           "identifying trends, performance insights, and potential investment opportunities to provide actionable recommendations. and key financial signals to support decision-making"),
     backstory=("you are a veteran financial analyst with deep expertise in tntrpreting stock market data."
