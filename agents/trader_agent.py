@@ -1,20 +1,34 @@
-from crewai import Agent,LLM
+from crewai import Agent, LLM
+from dotenv import load_dotenv
+import os
 
+# Load environment variables
+load_dotenv()
+
+# Get Groq API key
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+
+# Initialize Groq LLM
 llm = LLM(
-    model="groq/llama-3.3-70b-versatile",
-    temperature=0.0
+    provider="groq",
+    model="groq/llama-3.1-8b-instant",
+    api_key=GROQ_API_KEY,
+    temperature=0.2
 )
 
-analyst_agent = Agent(
+# Define trader agent
+trader_agent = Agent(
     role="Strategic Stock Trader",
-    goal=("decide whether to buy , sell or hold a given stock based on live market data,"
-          "price movement, and financial analysis with the available data."),
-    backstory=("you are strategic stock trader with a strong background in financial analysis and market trends."
-               "you rely on real time stock data, daily price movements, and financial indicators to make informed trading decisions."
-                   "that optimize returns and reduce risk.")  ,
+    goal=(
+        "Decide whether to buy, sell, or hold a given stock based on analyst insights, "
+        "market trends, and risk considerations."
+    ),
+    backstory=(
+        "You are an experienced stock trader specializing in execution strategies and "
+        "portfolio decisions. You interpret analyst reports and market signals to "
+        "determine optimal trading actions that maximize returns while managing risk."
+    ),
     llm=llm,
     tools=[],
     verbose=True
 )
-
-trader_agent = analyst_agent

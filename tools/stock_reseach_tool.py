@@ -1,7 +1,7 @@
 import yfinance as yf
 from crewai.tools import tool
 
-@tool("live_stock_data")  
+@tool("Live stock information Tool")
 def get_stock_price(stock_symbol: str) -> str:
     """
     Get the current stock price for a given ticker symbol.
