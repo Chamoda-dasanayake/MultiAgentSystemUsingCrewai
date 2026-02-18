@@ -1,6 +1,6 @@
 from crewai import Agent,LLM
 
-from tools.stock_research_tool import StockResearchTool 
+from tools.stock_research_tool import get_stock_price 
 
 llm = LLM(
     model="groq/llama-3.3-70b-versatile",

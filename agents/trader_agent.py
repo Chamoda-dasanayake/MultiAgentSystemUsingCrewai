@@ -16,3 +16,5 @@ analyst_agent = Agent(
     tools=[],
     verbose=True
 )
+
+trader_agent = analyst_agent
